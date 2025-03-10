@@ -11,8 +11,8 @@ import java.util.List;
  * modificar el número de teléfono de un contacto concreto.
  */
 
-public class Agenda implements AgendaInterface {
-    private List<Persona> contacts; // Lista de Persona
+public class Agenda {
+    private List<Contacto> contacts; // Lista de Contacto
 
 
     /**
@@ -33,7 +33,7 @@ public class Agenda implements AgendaInterface {
 
     public void addContact(String name, String phone) {
         boolean exists = false;
-        for (Persona c : contacts) {
+        for (Contacto c : contacts) {
             if (c.getName().equalsIgnoreCase(name)) {
                 exists = true;
                 c.getPhones().add(phone);
@@ -42,7 +42,7 @@ public class Agenda implements AgendaInterface {
         }
 
         if (!exists) {
-            Persona newContact = new Persona(name, phone);
+            Contacto newContact = new Contacto(name, phone);
             contacts.add(newContact);
         }
     }
@@ -54,10 +54,10 @@ public class Agenda implements AgendaInterface {
      */
 
     public void removeContact(String name) {
-        Iterator<Persona> it = contacts.iterator();
+        Iterator<Contacto> it = contacts.iterator();
 
         while (it.hasNext()) {
-            Persona c = it.next();
+            Contacto c = it.next();
 
             if (c.getName().equalsIgnoreCase(name)) {
                 it.remove();
@@ -74,7 +74,7 @@ public class Agenda implements AgendaInterface {
      */
 
     public void modifyPhoneNumber(String name, String oldPhone, String newPhone) {
-        for (Persona c : contacts) {
+        for (Contacto c : contacts) {
             if (c.getName().equalsIgnoreCase(name)) {
                 List<String> phones = c.getPhones();
 
@@ -93,7 +93,7 @@ public class Agenda implements AgendaInterface {
      * @return La lista de contactos.
      */
 
-    public List<Persona> getContacts() {
+    public List<Contacto> getContacts() {
         return this.contacts;
     }
 }

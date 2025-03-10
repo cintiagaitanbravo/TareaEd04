@@ -11,7 +11,7 @@ import java.util.List;
  * modificar el número de teléfono de un contacto concreto.
  */
 
-public class Agenda {
+public class Agenda implements AgendaInterface {
     private List<Persona> contacts; // Lista de Persona
 
 
@@ -31,6 +31,7 @@ public class Agenda {
      * @param phone El número de teléfono del contacto.
      */
 
+    @Override
     public void addContact(String name, String phone) {
         boolean exists = false;
         for (Persona c : contacts) {
@@ -53,6 +54,7 @@ public class Agenda {
      * @param name El nombre del contacto a eliminar.
      */
 
+    @Override
     public void removeContact(String name) {
         Iterator<Persona> it = contacts.iterator();
 
@@ -73,6 +75,7 @@ public class Agenda {
      * @param newPhone El nuevo número de teléfono.
      */
 
+    @Override
     public void modifyPhoneNumber(String name, String oldPhone, String newPhone) {
         for (Persona c : contacts) {
             if (c.getName().equalsIgnoreCase(name)) {
@@ -93,6 +96,7 @@ public class Agenda {
      * @return La lista de contactos.
      */
 
+    @Override
     public List<Persona> getContacts() {
         return this.contacts;
     }
